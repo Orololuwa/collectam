@@ -1,0 +1,6 @@
+[submodule "collect_am-api"]
+	path = collect_am-api
+	url = https://github.com/Orololuwa/collect_am-api
+[submodule "collect_am-dashboard"]
+	path = collect_am_dashboard
+	url = https://github.com/Orololuwa/collect_am-dashboard

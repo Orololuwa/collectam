@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  app:
+    container_name: collect_am-api
+    build:
+      context: ./collect_am-api
+      dockerfile: Dockerfile.staging
+    image: collect_am-api:v1.0
+    ports:
+      - "8085:8085"
+    env_file:
+      - ./collect_am-api/.env
+    volumes:
+      - ./collect_am-api:/app
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge

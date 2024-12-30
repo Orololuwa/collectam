@@ -1,0 +1,46 @@
+version: "3.8"
+
+services:
+  collect_am-api:
+    container_name: collect_am-api
+    build:
+      context: ./collect_am-api
+      dockerfile: Dockerfile.dev
+    image: collect_am-api-dev:v1.0
+    ports:
+      - "8085:8085"
+    env_file:
+      - ./collect_am-api/.env
+    volumes:
+      - ./collect_am-api:/app
+      # - ./cmd:/app/cmd
+      - ./collect_am-api/.air.toml:/app/.air.toml # Mount the .air.toml file to /app
+    networks:
+      - app-network
+    working_dir: /app
+
+  collect_am-dashboard:
+    container_name: collect_am-dashboard
+    build:
+      context: ./collect_am_dashboard
+      dockerfile: Dockerfile.dev
+    image: collect_am-dashboard-dev:v1.0
+    ports:
+      - "3009:3000"
+    stdin_open: true
+    tty: true
+    env_file:
+      - ./collect_am_dashboard/.env
+    volumes:
+      - ./collect_am_dashboard:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - NODE_ENV=development
+    networks:
+      - app-network
+    working_dir: /app
+
+networks:
+  app-network:
+    driver: bridge

@@ -19,6 +19,11 @@ Collectam is an mini accounting system that lets you keep track of your baisc bu
 
 ## How to Use
 
+- Run git clone with [submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
+
+- Alternatively,
 - Clone this repo into a folder which would be the parent folder
 - Clone all the sub repos into the parent folders
 - If you have Docker on your system, build and run the docker file to spin up all the applications
+
+- Alternatively,
